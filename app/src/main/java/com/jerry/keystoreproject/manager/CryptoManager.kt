@@ -4,7 +4,6 @@ import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import java.io.InputStream
 import java.io.OutputStream
-import java.security.DigestOutputStream
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
@@ -13,6 +12,10 @@ import javax.crypto.spec.IvParameterSpec
 
 class CryptoManager {
 
+    /*
+     * Load the Android KeyStore instance using the
+     * AndroidKeyStore provider to list the currently stored entries.
+     */
     private val keyStore = KeyStore.getInstance("AndroidKeyStore") .apply {
         load(null)
     }
