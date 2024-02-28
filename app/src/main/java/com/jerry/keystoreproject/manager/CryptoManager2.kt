@@ -12,8 +12,6 @@ import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
 
-
-
 class CryptoManager2 {
 
     private val alias = "alias"

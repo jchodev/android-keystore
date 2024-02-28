@@ -27,12 +27,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.jerry.keystoreproject.manager.CryptoManager
 import com.jerry.keystoreproject.manager.CryptoManager2
 import com.jerry.keystoreproject.ui.theme.KeystoreprojectTheme
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+
 
 class MainActivity : ComponentActivity() {
 
@@ -41,12 +38,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val file = File(filesDir, "my_secret.txt")
-        if (!file.exists()) {
-            file.createNewFile()
-        }
-
-        val cryptoManager = CryptoManager()
         val cryptoManager2 = CryptoManager2()
 
         setContent {
@@ -75,35 +66,8 @@ class MainActivity : ComponentActivity() {
                             placeholder = { Text(text = "Input string to Encrypt!") }
                         )
                         Spacer(modifier = Modifier.height(8.dp))
-//                        Row {
-//                            Button(onClick = {
-//                                val bytes = messageToEncrypt.encodeToByteArray()
-//
-//                                val fos = FileOutputStream(file)
-//
-//                                messageToDecrypt = cryptoManager.encrypt(
-//                                    bytes = bytes,
-//                                    outputStream = fos
-//                                ).decodeToString()
-//                            }) {
-//                                Text(text = "Encrypt")
-//                            }
-//                            Spacer(modifier = Modifier.width(16.dp))
-//                            Button(onClick = {
-//                                messageToEncrypt = cryptoManager.decrypt(
-//                                    inputStream = FileInputStream(file)
-//                                ).decodeToString()
-//                            }) {
-//                                Text(text = "Decrypt From secret File!")
-//                            }
-//                        }
-//                        Text(text = messageToDecrypt)
                         Row {
                             Button(onClick = {
-
-//                                messageToDecrypt = cryptoManager2.encrypt(
-//                                    messageToEncrypt
-//                                ).decodeToString()
                                 messageToDecrypt = cryptoManager2.encryptText(
                                     textToEncrypt = messageToEncrypt
                                 )
@@ -113,10 +77,6 @@ class MainActivity : ComponentActivity() {
                             }
                             Spacer(modifier = Modifier.width(16.dp))
                             Button(onClick = {
-//                                val aaa =  cryptoManager2.decrypt(
-//                                    messageToDecrypt
-//                                )
-//                                messageToEncrypt = aaa.decodeToString()
                                 messageToEncrypt = cryptoManager2.decryptData(
                                     text = messageToDecrypt
                                 )
