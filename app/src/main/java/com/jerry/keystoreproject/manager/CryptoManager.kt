@@ -34,7 +34,7 @@ class CryptoManager {
     }
 
     private fun getKey(): SecretKey {
-        val existingKey = keyStore.getEntry("secret", null) as? KeyStore.SecretKeyEntry
+        val existingKey = keyStore.getEntry("aaa", null) as? KeyStore.SecretKeyEntry
         return existingKey?.secretKey ?: createKey()
     }
 
@@ -42,7 +42,7 @@ class CryptoManager {
         return KeyGenerator.getInstance(ALGORITHM).apply {
             init (
                 KeyGenParameterSpec.Builder(
-                    "secret",
+                    "aaa",
                     KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
                 )
                     .setBlockModes(BLOCK_MODE)
